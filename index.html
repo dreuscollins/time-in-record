@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Time-In Record</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+</head>
+<body>
+    <div class="container">
+
+
+    <h1>Daily Time-In Record</h1>
+
+    <!-- Date Input -->
+    <label for="date">Select Date:</label>
+    <input type="date" id="date">
+
+    <!-- Time-In Input -->
+    <label for="timeIn">Time In:</label>
+    <input type="time" id="timeIn">
+
+    <!-- Time-Out Input -->
+    <label for="timeOut">Time Out:</label>
+    <input type="time" id="timeOut">
+
+    <!-- Button to Record Time -->
+    <button onclick="recordTime()">Record Time</button>
+
+    <!-- Section to display recorded times -->
+    <div id="records">
+        <!-- Section to display overall total hours -->
+<div id="overall">
+    <h2>Overall Hours Worked: <span id="overallHours">0</span> hrs</h2>
+</div>
+
+        <h2>Recorded Times</h2>
+        <ul id="recordList"></ul>
+    </div>
+
+</div>
+
+
+    <script src="script.js"></script> <!-- External JavaScript -->
+</body>
+</html>
