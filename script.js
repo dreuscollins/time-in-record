@@ -37,6 +37,14 @@ function recordTime() {
 
     // Refresh the displayed records
     displayRecords();
+
+    // Clear input fields after recording
+    document.getElementById("date").value = "";
+    document.getElementById("timeIn").value = "";
+    document.getElementById("timeOut").value = "";
+
+    // Refocus on the date field for faster entry
+    document.getElementById("date").focus();
 }
 
 // Function to save record to local storage
