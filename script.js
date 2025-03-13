@@ -109,9 +109,35 @@ recordList.appendChild(li);
         overallHours += parseFloat(record.totalHours);
     });
 
+    updateSalary(overallHours);
+
     // Display the overall hours
     overallHoursElement.textContent = overallHours.toFixed(2);
 }
 
 // Load saved records when the page loads
 window.onload = displayRecords;
+
+// Define your hourly rate
+const hourlyRate = 80.625;
+
+// Function to toggle salary display
+function toggleSalary() {
+    let salaryDiv = document.getElementById("salaryDisplay");
+    let toggleButton = document.getElementById("toggleSalary");
+
+    if (salaryDiv.style.display === "none") {
+        salaryDiv.style.display = "block";
+        toggleButton.textContent = "👁️ Hide Salary";
+    } else {
+        salaryDiv.style.display = "none";
+        toggleButton.textContent = "👁️ Show Salary";
+    }
+}
+
+// Function to update and display salary
+function updateSalary(overallHours) {
+    let salaryAmount = overallHours * hourlyRate;
+    document.getElementById("salaryAmount").textContent = salaryAmount.toFixed(2);
+}
+
