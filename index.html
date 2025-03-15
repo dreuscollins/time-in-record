@@ -7,32 +7,46 @@
     <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
 </head>
 <body>
+<!--  Welcome Pop-Up Modal -->
+<div id="welcomeModal" class="modal">
+    <div class="modal-content">
+        <h2>👋 READ ME!</h2>
+        <p>Hi, I'm <strong>Jorge Llz</strong>, the developer of this tool.</p>
+        <p>This was made for personal use, but feel free to use it!</p>
+        <p>⚠️ <strong>Disclaimer:</strong> The calculations may not be accurate for everyone since it was designed for <strong>Ohana Trading Corp.</strong></p>
+        <p>⏳ Overtime calculations may differ from your company’s policies.</p>
+        <p>📩 If you want additional features, email me at <a href="mailto:drewskyle8@gmail.com">drewskyle8@gmail.com</a>.</p>
+        <button id="closeModal">Got It!</button>
+    </div>
+</div>
+
     <div class="container">
 
 
-    <h1>Daily Time-In Record</h1>
+    <h1>Daily Time Record</h1>
 
     <!-- Date Input -->
-    <label for="date">Select Date:</label>
+    <label for="date">📅 Select Date:</label>
     <input type="date" id="date">
 
     <!-- Time-In Input -->
-    <label for="timeIn">Time In:</label>
+    <label for="timeIn">🕒 Time In:</label>
     <input type="time" id="timeIn">
 
     <!-- Time-Out Input -->
-    <label for="timeOut">Time Out:</label>
+    <label for="timeOut">🕒 Time Out:</label>
     <input type="time" id="timeOut">
 
     <!-- Button to Record Time -->
-    <button onclick="recordTime()">Record Time</button>
+    <button class="record-btn" onclick="recordTime()">✅ Record Time</button>
 
-    
+
     <!-- Salary Display-->
     <button id="toggleSalary" onclick="toggleSalary()">👁️ Show Salary</button>
-<div id="salaryDisplay" style="display: none;">
-    <strong>Salary: </strong> $<span id="salaryAmount">0.00</span>
+    <div id="salaryDisplay" style="display: none;">
+        <strong>💰 Salary: </strong> $<span id="salaryAmount">0.00</span>
 </div>
+
 
 
     <!-- Section to display recorded times -->
@@ -42,11 +56,15 @@
     <h2>Overall Hours Worked: <span id="overallHours">0</span> hrs</h2>
 </div>
 
+<button id="exportData">📄 Export Data</button>
+
         <h2>Recorded Times</h2>
         <ul id="recordList"></ul>
     </div>
 
 </div>
+
+
 
 
     <script src="script.js"></script> <!-- External JavaScript -->
