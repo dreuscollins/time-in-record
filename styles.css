@@ -1,7 +1,7 @@
 /* Basic styling */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #87CEFA, #ffffff);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
     color: #333;
     padding: 20px;
     display: flex;
@@ -16,8 +16,8 @@ body {
 .container {
     background: white;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 90%;
     max-width: 500px;
@@ -30,6 +30,16 @@ h1 {
     font-size: 24px;
 }
 
+input {
+    background: #f7f7f7; /* 🎨 Lighter background */
+    transition: all 0.3s ease; /* 🎬 Added smooth hover effect */
+}
+
+input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
 /* Input and button styling */
 input, button {
     width: 90%;
@@ -38,6 +48,9 @@ input, button {
     margin: 10px 0;
     padding: 12px;
     font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+
 }
 
 button {
@@ -64,6 +77,14 @@ button.delete:hover {
     margin-top: 20px;
 }
 
+.record-btn {
+    background: #28a745;
+}
+
+.record-btn:hover {
+    background: #218838;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -83,6 +104,9 @@ li {
 
 
 }
+
+
+
 /* Overall Hours Section */
 #overall {
     background: #007BFF;
@@ -126,4 +150,119 @@ li {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* 🌟 Welcome Pop-Up Modal */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Add closing animation */
+.modal.fadeOut {
+    animation: fadeOut 0.4s ease-in-out forwards;
+}
+
+.modal-content.fadeOut {
+    animation: appClose 0.4s ease-in-out forwards;
+}
+
+/* Smooth fade-out */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* App close effect */
+@keyframes appClose {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8); /* Shrinks the modal while fading out */
+    }
+}
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.5s ease-in-out;
+}
+
+.modal h2 {
+    color: #007BFF;
+}
+
+.modal p {
+    font-size: 16px;
+    color: #333;
+}
+
+.modal a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.modal button {
+    margin-top: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal button:hover {
+    background: #0056b3;
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#exportData {
+    font-size: 14px;
+    padding: 6px 12px; /* Adjust padding for a compact fit */
+    border-radius: 5px;
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block; /* Ensures it only takes up necessary space */
+    width: auto; /* Automatically adjust width */
+}
+
+#exportData:hover {
+    background: #218838;
 }
