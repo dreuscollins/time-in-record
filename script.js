@@ -128,11 +128,11 @@ function toggleSalary() {
 
     if (salaryDiv.style.display === "none") {
         salaryDiv.style.display = "block";
-        toggleButton.textContent = "👁️ Hide Salary";
+        toggleButton.textContent = "🙉 Hide Salary";
     } else {
         salaryDiv.style.display = "none";
         toggleButton.textContent = "👁️ Show Salary";
-    }
+    }z
 }
 
 // Function to update and display salary
@@ -141,3 +141,59 @@ function updateSalary(overallHours) {
     document.getElementById("salaryAmount").textContent = salaryAmount.toFixed(2);
 }
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    let modal = document.getElementById("welcomeModal");
+    let modalContent = document.querySelector(".modal-content");
+    let closeModal = document.getElementById("closeModal");
+
+    // Show the modal
+    modal.style.display = "flex";
+
+        // Hide the modal with animation when button is clicked
+    closeModal.addEventListener("click", function () {
+        modal.classList.add("fadeOut"); // Fade out background
+        modalContent.classList.add("fadeOut"); // Shrink & fade out content
+
+        setTimeout(() => {
+            modal.style.display = "none"; // Completely hide modal after animation
+        }, 400); // Matches animation duration (0.4s)
+    });
+});
+
+function exportData() {
+    let records = JSON.parse(localStorage.getItem("timeRecords")) || [];
+    let overallHours = parseFloat(document.getElementById("overallHours").textContent) || 0;
+    let salary = overallHours * hourlyRate;
+
+    if (records.length === 0) {
+        alert("No data to export.");
+        return;
+    }
+
+    let dataString = "Work Records\n";
+    dataString += "====================\n";
+
+    records.forEach(record => {
+        dataString += `📅 Date: ${record.date}\n`;
+        dataString += `⏰ Time In: ${record.timeIn}\n`;
+        dataString += `⏳ Time Out: ${record.timeOut}\n`;
+        dataString += `⌛ Total Hours: ${record.totalHours} hrs\n`;
+        dataString += "--------------------\n";
+    });
+
+    dataString += `\n👥 Overall Hours: ${overallHours.toFixed(2)} hrs\n`;
+    dataString += `💰 Salary: ₱${salary.toFixed(2)}\n`;
+
+    // Create a Blob and trigger download
+    let blob = new Blob([dataString], { type: "text/plain" });
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "WorkRecords.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+// Attach event listener to the button
+document.getElementById("exportData").addEventListener("click", exportData);
