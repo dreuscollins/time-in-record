@@ -7,18 +7,30 @@
     <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
 </head>
 <body>
-<!--  Welcome Pop-Up Modal -->
+
+
+<!-- Welcome Pop-Up Modal -->
 <div id="welcomeModal" class="modal">
     <div class="modal-content">
-        <h2>👋 READ ME!</h2>
-        <p>Hi, I'm <strong>Jorge Llz</strong>, the developer of this tool.</p>
-        <p>This was made for personal use, but feel free to use it!</p>
-        <p>⚠️ <strong>Disclaimer:</strong> The calculations may not be accurate for everyone since it was designed for <strong>Ohana Trading Corp.</strong></p>
-        <p>⏳ Overtime calculations may differ from your company’s policies.</p>
-        <p>📩 If you want additional features, email me at <a href="mailto:drewskyle8@gmail.com">drewskyle8@gmail.com</a>.</p>
-        <button id="closeModal">Got It!</button>
+        <h2>👋 Welcome!</h2>
+        <p>Hello, and thank you for using this webpage.</p>
+        <p>I'm <strong>Jorgen C.</strong>, the developer behind this project.</p>
+        <p>This tool is designed to help you efficiently track daily work hours, calculate total hours worked, and estimate salary based on recorded data.</p>
+        
+        <h3>✨ Features:</h3>
+        <ul style="text-align: left;">
+            <li>📅 Select and record daily work hours.</li>
+            <li>🕒 Automatic calculation of total hours worked.</li>
+            <li>💰 Salary estimation based on total hours worked.</li>
+            <li>📄 Export work records for documentation.</li>
+            <li>🗑️ Delete individual records as needed.</li>
+        </ul>
+        <button id="closeModal">Understood</button>
     </div>
 </div>
+
+
+
 
     <div class="container">
 
@@ -44,7 +56,7 @@
     <!-- Salary Display-->
     <button id="toggleSalary" onclick="toggleSalary()">👁️ Show Salary</button>
     <div id="salaryDisplay" style="display: none;">
-        <strong>💰 Salary: </strong> $<span id="salaryAmount">0.00</span>
+        <strong>💰 Est Salary: </strong> $<span id="salaryAmount">0.00</span>
 </div>
 
 
@@ -58,7 +70,7 @@
 
 <button id="exportData">📄 Export Data</button>
 
-        <h2>Recorded Times</h2>
+        <h2>Your Data</h2>
         <ul id="recordList"></ul>
     </div>
 
