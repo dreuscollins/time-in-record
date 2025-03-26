@@ -132,7 +132,7 @@ function toggleSalary() {
     } else {
         salaryDiv.style.display = "none";
         toggleButton.textContent = "👁️ Show Salary";
-    }z
+    }
 }
 
 // Function to update and display salary
@@ -163,37 +163,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function exportData() {
     let records = JSON.parse(localStorage.getItem("timeRecords")) || [];
-    let overallHours = parseFloat(document.getElementById("overallHours").textContent) || 0;
-    let salary = overallHours * hourlyRate;
+    let overallHours = records.reduce((sum, record) => sum + parseFloat(record.totalHours), 0);
+    let salaryAmount = (overallHours * hourlyRate).toFixed(2);
 
-    if (records.length === 0) {
-        alert("No data to export.");
-        return;
-    }
-
-    let dataString = "Work Records\n";
-    dataString += "====================\n";
+    let textData = "Date | Time In | Time Out | Total Hours\n";
+    textData += "------------------------------------\n";
 
     records.forEach(record => {
-        dataString += `📅 Date: ${record.date}\n`;
-        dataString += `⏰ Time In: ${record.timeIn}\n`;
-        dataString += `⏳ Time Out: ${record.timeOut}\n`;
-        dataString += `⌛ Total Hours: ${record.totalHours} hrs\n`;
-        dataString += "--------------------\n";
+        textData += `${record.date} | ${record.timeIn} | ${record.timeOut} | ${record.totalHours} hrs\n`;
     });
 
-    dataString += `\n👥 Overall Hours: ${overallHours.toFixed(2)} hrs\n`;
-    dataString += `💰 Salary: ₱${salary.toFixed(2)}\n`;
+    textData += `\nOverall Hours: ${overallHours.toFixed(2)} hrs\n`;
+    textData += `Salary: $${salaryAmount}`;
 
-    // Create a Blob and trigger download
-    let blob = new Blob([dataString], { type: "text/plain" });
-    let a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "WorkRecords.txt";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    let blob = new Blob([textData], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "TimeRecords.txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
-// Attach event listener to the button
+// Attach event listener to the export button
 document.getElementById("exportData").addEventListener("click", exportData);
